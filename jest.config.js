@@ -10,4 +10,6 @@ module.exports = {
   testURL: 'http://localhost',
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
   verbose: false,
+  roots: ['<rootDir>/src', 'src'],
+  modulePaths: ['<rootDir>/src'],
 };

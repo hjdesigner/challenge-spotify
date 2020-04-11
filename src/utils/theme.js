@@ -7,7 +7,7 @@ const theme = {
     black: '#000000',
     gray: '#999999',
     ice: '#FAFAFA',
-
+    white: '#FFFFFF',
   },
   spaces: {
     default: '8px',
@@ -15,9 +15,11 @@ const theme = {
     medium: '16px',
     large: '24px',
     extraLarge: '32px',
+    bigLarge: '56px',
   },
   media: {
     tablet: '768px',
+    desktop: '1024px',
   },
 };
 
@@ -28,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
   body {
-    background-color: ${theme.colors.black};
+    background-color: #151515;
     font-family: 'Roboto', sans-serif;
     font-size: 10px;
   }

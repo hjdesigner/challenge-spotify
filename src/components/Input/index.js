@@ -29,7 +29,7 @@ const Label = styled.label`
   width: 100%;
 `;
 const Field = styled.input`
-  background-color: ${({ theme }) => theme.colors.black};
+  background-color: transparent;
   border: 0px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
   color: ${({ theme }) => theme.colors.ice};
