@@ -18,6 +18,7 @@ const Input = ({
       placeholder={placeholder}
       value={value}
       onChange={handleChange}
+      autoComplete="off"
     />
   </>
 );

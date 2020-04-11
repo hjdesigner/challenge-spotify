@@ -13,10 +13,20 @@ const Albums = ({ item }) => (
 );
 
 const Element = styled.li`
+  cursor: pointer;
   margin-bottom: ${({ theme }) => theme.spaces.medium};
+  padding: 8px;
+  transition: all .2s ease-in-out;
   width: 48%;
 
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.blackTransparent};
+  }
+
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
+    width: 30%;
+  }
+  @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
     width: 17%;
   }
 `;

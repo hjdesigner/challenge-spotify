@@ -1,10 +1,11 @@
 import React from 'react';
+import { bool } from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import 'boxicons';
 
-const Loading = () => (
+const Loading = ({ vh }) => (
   <Container>
-    <box-icon name="loader-alt" />
+    <box-icon view={vh} name="loader-alt" />
   </Container>
 );
 
@@ -20,7 +21,7 @@ const rotate = keyframes`
 const Container = styled.div`
   align-items: center;
   display: flex;
-  height: 100vh;
+  height: ${(props) => (props.view ? '100vh' : 'auto')};
   justify-content: center;
   width: 100%;
 
@@ -29,5 +30,13 @@ const Container = styled.div`
     fill: #FFF;
   }
 `;
+
+Loading.defaultProps = {
+  vh: true,
+};
+
+Loading.propTypes = {
+  vh: bool,
+};
 
 export default Loading;

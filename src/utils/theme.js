@@ -8,6 +8,7 @@ const theme = {
     gray: '#999999',
     ice: '#FAFAFA',
     white: '#FFFFFF',
+    blackTransparent: 'rgba(0, 0, 0, .5)',
   },
   spaces: {
     default: '8px',

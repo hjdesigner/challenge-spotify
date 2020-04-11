@@ -6,7 +6,7 @@ import Token from 'components/Token';
 import Loading from 'components/Loading';
 import Search from 'views/search';
 import Theme from 'utils/theme';
-import { statusToken } from 'reduxFlow/reducers/token/action-creators';
+import { statusToken, addToken } from 'reduxFlow/reducers/token/action-creators';
 import { falseLoader } from 'reduxFlow/reducers/loader/action-creators';
 import 'boxicons';
 
@@ -21,7 +21,7 @@ const App = ({
     if (token === '' || token === null) {
       return showToken();
     }
-    return hiddenToken();
+    return hiddenToken(token);
   }, []);
 
   return (
@@ -101,7 +101,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(statusToken(false));
     dispatch(falseLoader());
   },
-  hiddenToken: () => {
+  hiddenToken: (token) => {
+    dispatch(addToken(token));
     dispatch(statusToken(true));
     dispatch(falseLoader());
   },
