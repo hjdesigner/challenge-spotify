@@ -4,6 +4,7 @@ import {
   ADD_SEARCH,
   RECENT,
   EMPTY,
+  RECENT_INIT,
 } from './actions';
 
 export const changeSearch = (text) => ({
@@ -37,5 +38,11 @@ export const addRecentSearch = (text, result) => ({
   payload: {
     search: text,
     recent: result,
+  },
+});
+export const recentInit = (value) => ({
+  type: RECENT_INIT,
+  payload: {
+    recent: value,
   },
 });

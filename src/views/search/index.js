@@ -117,6 +117,7 @@ const mapDispatchToProps = (dispatch) => ({
     event.preventDefault();
     if (value !== '') {
       dispatch(toggleLoading(true));
+      sessionStorage.setItem('recent', JSON.stringify(recent));
       const matches = findMatches(value, recent);
 
       if (matches.length > 0) {

@@ -5,6 +5,7 @@ import {
   LOADING,
   RECENT,
   EMPTY,
+  RECENT_INIT,
 } from './actions';
 
 const initialState = {
@@ -40,6 +41,10 @@ const search = createReducer(initialState, {
     ...state,
     empty: action.payload.empty,
     result: [],
+  }),
+  [RECENT_INIT]: (state, action) => ({
+    ...state,
+    recent: action.payload.recent,
   }),
 });
 

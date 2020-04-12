@@ -9,6 +9,7 @@ import Album from 'views/album';
 import Theme from 'utils/theme';
 import { statusToken, addToken } from 'reduxFlow/reducers/token/action-creators';
 import { falseLoader } from 'reduxFlow/reducers/loader/action-creators';
+import { recentInit } from 'reduxFlow/reducers/search/action-creators';
 import 'boxicons';
 
 const App = ({
@@ -106,7 +107,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(falseLoader());
   },
   hiddenToken: (token) => {
+    const recent = sessionStorage.getItem('recent') ? JSON.parse(sessionStorage.getItem('recent')) : [];
     dispatch(addToken(token));
+    dispatch(recentInit(recent));
     dispatch(statusToken(true));
     dispatch(falseLoader());
   },
