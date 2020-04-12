@@ -30,3 +30,7 @@
 - `yarn lint:fix (or npm lint)`: Run code analysis and fix minor errors
 - `yarn homologation (or npm run homologation)`: Build project to homologation
 - `yarn production (or npm run production)`: Build project to homologation
+
+## ACCESS TOKEN 
+
+[Acesse esse link para gerar um token para utilizar a aplicação](https://developer.spotify.com/console/get-album-tracks/?id=7bUuKrK0ksqlJ2oDYfo0N5&market=&limit=&offset=)
