@@ -3,6 +3,9 @@ import { mount } from 'enzyme';
 import { expect } from 'chai';
 import Songs from './index';
 import Theme from '../../utils/theme';
+import { Provider } from 'react-redux';
+import configureStore from '../../reduxFlow/configure-store';
+const store = configureStore();
 
 describe('Albums Test Suite', () => {
   let wrapper, data;
@@ -14,7 +17,7 @@ describe('Albums Test Suite', () => {
       preview_url: 'https://p.scdn.co/mp3-preview/9628b45a9e5469740266e078f0c8bf9f2a44cf75?cid=774b29d4f13844c495f206cafdad9c86',
       track_number: 13,
     };
-    wrapper = mount(<Theme><Songs item={data} /></Theme>);
+    wrapper = mount(<Provider store={store}><Theme><Songs item={data} /></Theme></Provider>);
   });
 
   it('Should return one li', () => {

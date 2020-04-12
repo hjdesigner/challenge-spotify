@@ -13,6 +13,7 @@ import axios from 'axios';
 import Cover from 'components/Cover';
 import Songs from 'components/Songs';
 import Loading from 'components/Loading';
+import PlayAudio from 'components/PlayAudio';
 import {
   resetAlbum,
   toggleViewAlbum,
@@ -30,6 +31,7 @@ const Album = ({
   songs,
   loader,
   resetToken,
+  audio,
 }) => {
   useEffect(() => {
     axios.get(`${process.env.SPOTIFY_API}albums/${id}/tracks`, {
@@ -61,6 +63,7 @@ const Album = ({
           songs.map((item) => <Songs key={item.id} item={item} />)
         )}
       </ListSongs>
+      {audio !== '' && <PlayAudio audio={audio} />}
     </Container>
   );
 };
@@ -68,6 +71,7 @@ const Album = ({
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 80px;
 `;
 const Action = styled.div`
   margin: ${({ theme }) => theme.spaces.large} 0;
@@ -109,6 +113,7 @@ const mapStateProps = (state) => ({
   token: state.token.token,
   songs: state.album.songs,
   loader: state.album.loading,
+  audio: state.album.audio,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -130,6 +135,7 @@ Album.defaultProps = {
   album: {},
   songs: [],
   handleClick: () => {},
+  audio: '',
 };
 
 Album.propTypes = {
@@ -141,6 +147,7 @@ Album.propTypes = {
   resetToken: func.isRequired,
   songs: arrayOf(any),
   loader: bool.isRequired,
+  audio: string,
 };
 
 export default connect(mapStateProps, mapDispatchToProps)(Album);

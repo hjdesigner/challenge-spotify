@@ -5,6 +5,7 @@ import {
   RESET_ALBUM,
   ID_ALBUM,
   LOADER_ALBUM,
+  ADD_AUDIO,
 } from './actions';
 
 export const addCover = (value) => ({
@@ -45,5 +46,11 @@ export const addIdAlbum = (value) => ({
   type: ID_ALBUM,
   payload: {
     id: value,
+  },
+});
+export const addAudio = (value) => ({
+  type: ADD_AUDIO,
+  payload: {
+    audio: value,
   },
 });

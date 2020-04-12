@@ -8,6 +8,7 @@ import {
   RESET_ALBUM,
   ID_ALBUM,
   LOADER_ALBUM,
+  ADD_AUDIO,
 } from './actions';
 
 it('Should return the album equal to the past object', () => {
@@ -17,6 +18,7 @@ it('Should return the album equal to the past object', () => {
     songs: [],
     id: '',
     loading: true,
+    audio: '',
   });
   const action = deepfreeze({
     type: ADD_COVER,
@@ -38,6 +40,7 @@ it('Should return the album equal to the past object', () => {
     songs: [],
     id: '',
     loading: true,
+    audio: '',
   };
   expect(album(before, action)).to.be.deep.equal(after);
 });
@@ -48,6 +51,7 @@ it('Should return status with text equal true', () => {
     songs: [],
     id: '',
     loading: true,
+    audio: '',
   });
   const action = deepfreeze({
     type: VIEW_ALBUM,
@@ -61,6 +65,7 @@ it('Should return status with text equal true', () => {
     songs: [],
     id: '',
     loading: true,
+    audio: '',
   };
   expect(album(before, action)).to.be.deep.equal(after);
 });
@@ -71,6 +76,7 @@ it('Should return the songs equal to the past object', () => {
     songs: [],
     id: '',
     loading: true,
+    audio: '',
   });
   const action = deepfreeze({
     type: ADD_SONGS,
@@ -114,6 +120,7 @@ it('Should return the songs equal to the past object', () => {
     ],
     id: '',
     loading: true,
+    audio: '',
   };
   expect(album(before, action)).to.be.deep.equal(after);
 });
@@ -139,6 +146,7 @@ it('Should return the state of the empty album if it has any value', () => {
     ],
     id: '',
     loading: true,
+    audio: '',
   });
   const action = deepfreeze({
     type: RESET_ALBUM,
@@ -148,6 +156,7 @@ it('Should return the state of the empty album if it has any value', () => {
       songs: [],
       id: '',
       loading: true,
+      audio: '',
     },
   });
   const after = {
@@ -156,6 +165,7 @@ it('Should return the state of the empty album if it has any value', () => {
     songs: [],
     id: '',
     loading: true,
+    audio: '',
   };
   expect(album(before, action)).to.be.deep.equal(after);
 });
@@ -166,6 +176,7 @@ it('Should return id with text equal asdc548aqwd$', () => {
     songs: [],
     id: '',
     loading: true,
+    audio: '',
   });
   const action = deepfreeze({
     type: ID_ALBUM,
@@ -179,6 +190,7 @@ it('Should return id with text equal asdc548aqwd$', () => {
     songs: [],
     id: 'asdc548aqwd$',
     loading: true,
+    audio: '',
   };
   expect(album(before, action)).to.be.deep.equal(after);
 });
@@ -189,6 +201,7 @@ it('Should return loading with value equal false', () => {
     songs: [],
     id: '',
     loading: true,
+    audio: '',
   });
   const action = deepfreeze({
     type: LOADER_ALBUM,
@@ -202,6 +215,32 @@ it('Should return loading with value equal false', () => {
     songs: [],
     id: '',
     loading: false,
+    audio: '',
+  };
+  expect(album(before, action)).to.be.deep.equal(after);
+});
+it('Should return audio with value equal abc', () => {
+  const before = deepfreeze({
+    status: false,
+    album: {},
+    songs: [],
+    id: '',
+    loading: true,
+    audio: '',
+  });
+  const action = deepfreeze({
+    type: ADD_AUDIO,
+    payload: {
+      audio: 'abc',
+    },
+  });
+  const after = {
+    status: false,
+    album: {},
+    songs: [],
+    id: '',
+    loading: true,
+    audio: 'abc',
   };
   expect(album(before, action)).to.be.deep.equal(after);
 });

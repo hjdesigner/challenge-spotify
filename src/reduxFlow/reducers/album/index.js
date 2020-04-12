@@ -6,6 +6,7 @@ import {
   RESET_ALBUM,
   ID_ALBUM,
   LOADER_ALBUM,
+  ADD_AUDIO,
 } from './actions';
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
   songs: [],
   id: '',
   loading: true,
+  audio: '',
 };
 
 const album = createReducer(initialState, {
@@ -36,6 +38,7 @@ const album = createReducer(initialState, {
     songs: action.payload.songs,
     id: action.payload.id,
     loading: action.payload.loading,
+    audio: action.payload.audio,
   }),
   [ID_ALBUM]: (state, action) => ({
     ...state,
@@ -44,6 +47,10 @@ const album = createReducer(initialState, {
   [LOADER_ALBUM]: (state, action) => ({
     ...state,
     loading: action.payload.loading,
+  }),
+  [ADD_AUDIO]: (state, action) => ({
+    ...state,
+    audio: action.payload.audio,
   }),
 });
 

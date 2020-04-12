@@ -1,6 +1,8 @@
 import React from 'react';
-import { objectOf, any } from 'prop-types';
+import { objectOf, any, func } from 'prop-types';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { addAudio } from 'reduxFlow/reducers/album/action-creators';
 
 function millisToMinutesAndSeconds(millis) {
   const minutes = Math.floor(millis / 60000);
@@ -8,8 +10,8 @@ function millisToMinutesAndSeconds(millis) {
   return `${minutes}:${(seconds < 10 ? '0' : '') + seconds}`;
 }
 
-const Songs = ({ item }) => (
-  <Container>
+const Songs = ({ item, handleClick }) => (
+  <Container onClick={handleClick(item.preview_url)}>
     <Number>{`${item.track_number}.`}</Number>
     <Info>
       <Name>{item.name}</Name>
@@ -37,15 +39,30 @@ const Info = styled.div`
 `;
 const Name = styled(Number)`
   color: ${({ theme }) => theme.colors.ice};
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.gray};
+  }
 `;
 const Time = styled(Number)``;
 
+const mapDispatchToProps = (dispatch) => ({
+  handleClick: (item) => (e) => {
+    e.preventDefault();
+    dispatch(addAudio(item));
+  },
+});
+
 Songs.defaultProps = {
   item: {},
+  handleClick: () => {},
 };
 
 Songs.propTypes = {
   item: objectOf(any),
+  handleClick: func,
 };
 
-export default Songs;
+export default connect(null, mapDispatchToProps)(Songs);
