@@ -18,16 +18,19 @@ const H1 = styled.h1`
   color: ${({ theme }) => theme.colors.gray};
   font-size: 24px;
   font-weight: 400;
+  width: 100%;
 `;
 const H2 = styled.h2`
   color: ${({ theme }) => theme.colors.gray};
   font-size: 18px;
   font-weight: 400;
+  width: 100%;
 `;
 const H3 = styled.h3`
   color: ${({ theme }) => theme.colors.gray};
   font-size: 16px;
   font-weight: 400;
+  width: 100%;
 `;
 
 TitleH1.defaultProps = {

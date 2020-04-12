@@ -1,9 +1,11 @@
 import React from 'react';
-import { objectOf, any } from 'prop-types';
+import { objectOf, any, func } from 'prop-types';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { addCover, toggleViewAlbum, addIdAlbum } from 'reduxFlow/reducers/album/action-creators';
 
-const Albums = ({ item }) => (
-  <Element key={item.id}>
+const Albums = ({ item, handleClick }) => (
+  <Element onClick={handleClick(item)} key={item.id}>
     <Figure>
       <Image src={item.images[1].url} alt={item.name} />
     </Figure>
@@ -50,12 +52,27 @@ const Artist = styled.p`
   margin-top: ${({ theme }) => theme.spaces.small};
 `;
 
+const mapDispatchToProps = (dispatch) => ({
+  handleClick: (item) => (e) => {
+    e.preventDefault();
+    dispatch(toggleViewAlbum(true));
+    dispatch(addIdAlbum(item.id));
+    dispatch(addCover({
+      image: item.images[1].url,
+      title: item.name,
+      artist: item.artists[0].name,
+    }));
+  },
+});
+
 Albums.defaultProps = {
   item: {},
+  handleClick: () => {},
 };
 
 Albums.propTypes = {
   item: objectOf(any),
+  handleClick: func,
 };
 
-export default Albums;
+export default connect(null, mapDispatchToProps)(Albums);

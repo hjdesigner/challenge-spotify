@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Token from 'components/Token';
 import Loading from 'components/Loading';
 import Search from 'views/search';
+import Album from 'views/album';
 import Theme from 'utils/theme';
 import { statusToken, addToken } from 'reduxFlow/reducers/token/action-creators';
 import { falseLoader } from 'reduxFlow/reducers/loader/action-creators';
@@ -15,6 +16,7 @@ const App = ({
   loading,
   showToken,
   hiddenToken,
+  viewAlbum,
 }) => {
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -36,7 +38,8 @@ const App = ({
             </BgLogo>
           </Logo>
           <Main>
-            <Search />
+            {!viewAlbum && <Search />}
+            {viewAlbum && <Album />}
           </Main>
         </Container>
       )}
@@ -94,6 +97,7 @@ const Main = styled.main`
 const mapStateProps = (state) => ({
   viewToken: state.token.status,
   loading: state.loader.status,
+  viewAlbum: state.album.status,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -110,6 +114,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 App.propTypes = {
   viewToken: bool.isRequired,
+  viewAlbum: bool.isRequired,
   loading: bool.isRequired,
   showToken: func.isRequired,
   hiddenToken: func.isRequired,

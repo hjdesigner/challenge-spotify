@@ -25,6 +25,7 @@ const search = createReducer(initialState, {
     search: action.payload.search,
     result: action.payload.result,
     recent: state.recent.concat(action.payload.result.map((item) => item)),
+    empty: false,
   }),
   [RECENT]: (state, action) => ({
     ...state,

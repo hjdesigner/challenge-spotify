@@ -3,6 +3,9 @@ import { mount } from 'enzyme';
 import { expect } from 'chai';
 import Albums from './index';
 import Theme from '../../utils/theme';
+import { Provider } from 'react-redux';
+import configureStore from '../../reduxFlow/configure-store';
+const store = configureStore();
 
 describe('Albums Test Suite', () => {
   let wrapper, data;
@@ -52,7 +55,7 @@ describe('Albums Test Suite', () => {
       "type" : "album",
       "uri" : "spotify:album:7bUuKrK0ksqlJ2oDYfo0N5",
     };
-    wrapper = mount(<Theme><Albums item={data} /></Theme>);
+    wrapper = mount(<Provider store={store}><Theme><Albums item={data} /></Theme></Provider>);
   });
 
   it('Should return one li', () => {

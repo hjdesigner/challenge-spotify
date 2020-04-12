@@ -133,7 +133,6 @@ const mapDispatchToProps = (dispatch) => ({
             } else {
               dispatch(addSearch(value, result.data.albums.items));
               dispatch(toggleLoading(false));
-              dispatch(toggleEmpty(false));
             }
           })
           .catch((error) => {
